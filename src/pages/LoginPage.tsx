@@ -26,6 +26,7 @@ const LoginPage = () => {
     flow: 'auth-code',
   });
 
+  // TODO: error시 처리
   const handleClickGithubLogin = () => {
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}`;
   };
@@ -71,12 +72,10 @@ const LoginPage = () => {
               <Text>Sign in with Github</Text>
             </Center>
           </Button>
-          <Button variant={'outline'}>
-            <Link to={'/signup'}>
-              <Center>
-                <Text>Create Account</Text>
-              </Center>
-            </Link>
+          <Button as={Link} to="/signup" variant={'outline'} p={'0'}>
+            <Center>
+              <Text>Create Account</Text>
+            </Center>
           </Button>
         </Stack>
       </Stack>
