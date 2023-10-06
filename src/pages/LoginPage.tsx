@@ -5,28 +5,31 @@ import { FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 
-const GOOGLE_CLIENT_ID =
-  '382921464283-7i13lqaj0skejg2oksn7gnsenuons90q.apps.googleusercontent.com';
-const GOOGLE_REDIRECT_URI = 'http://localhost:5173/home';
-const GITHUB_CLIENT_ID = '519820bf4bdd0f5a51e3';
+export const REDIRECT_URI = 'http://localhost:5173/home';
 
-// window.location.assign == window.location == window.location.href
+export const GOOGLE_CLIENT_ID =
+  '382921464283-7i13lqaj0skejg2oksn7gnsenuons90q.apps.googleusercontent.com';
+export const GOOGLE_SECRET_KEY = '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';
+
+export const GITHUB_CLIENT_ID = '519820bf4bdd0f5a51e3';
+export const GITHUB_SECRET_KEY = 'f4ac2e5f55df933cb70309e2f3ee1dece31a763e';
+
 const LoginPage = () => {
   // 구글 로그인 1번 방법
   const handleClickGoogleLogin = () => {
-    window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&scope=openid email profile`;
+    window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=openid email profile`;
   };
+
   // 구글 로그인 2번 방법(라이브러리 사용)
   const handleClickGoogleLogin2 = useGoogleLogin({
     onSuccess: (res) => {
-      window.location.href = GOOGLE_REDIRECT_URI;
+      window.location.href = REDIRECT_URI;
       console.log(res);
     },
     onError: (res) => console.log(res),
-    flow: 'auth-code',
+    flow: 'implicit',
   });
 
-  // TODO: error시 처리
   const handleClickGithubLogin = () => {
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}`;
   };
@@ -37,7 +40,7 @@ const LoginPage = () => {
         <Image src="/images/puppy.png" alt="로그인 배경 화면" />
         <Center>
           <Text fontSize="2xl" fontWeight={'bold'}>
-            재호팀 사이드 프로젝트
+            사이드 프로젝트
           </Text>
         </Center>
         <Stack
