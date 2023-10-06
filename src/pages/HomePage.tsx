@@ -89,7 +89,7 @@ const HomePage = () => {
   const initMap = useCallback(() => {
     if (mapRef.current) {
       new window.google.maps.Map(mapRef.current, {
-        center: { lat: -34.397, lng: 150.644 },
+        center: { lat: 37.647213, lng: 127.070997 },
         zoom: 8,
       });
     }
