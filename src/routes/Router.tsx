@@ -4,6 +4,8 @@ import LoginPage from '../pages/LoginPage';
 import MainLayout from './Layout/MinLayout';
 import SignUpPage from '../pages/SignUpPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import InfiniteScrollPage from '../pages/InfiniteScrollPage';
+import TodoPage from '../pages/TodoPage';
 
 const GOOGLE_CLIENT_ID =
   '382921464283-7i13lqaj0skejg2oksn7gnsenuons90q.apps.googleusercontent.com';
@@ -27,6 +29,14 @@ export const Router = createBrowserRouter([
       {
         path: '/home',
         element: <HomePage />,
+      },
+      {
+        path: '/infinitescroll',
+        element: <InfiniteScrollPage />,
+      },
+      {
+        path: '/todo',
+        element: <TodoPage />,
       },
     ],
   },
