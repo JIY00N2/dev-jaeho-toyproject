@@ -1,6 +1,7 @@
 import {
   Flex,
   IconButton,
+  Spacer,
   Tab,
   TabList,
   Tabs,
@@ -15,9 +16,9 @@ const Header = () => {
   const Icon = useColorModeValue(FaMoon, FaSun);
 
   return (
-    <Flex justifyContent={'space-around'}>
+    <Flex alignItems="center" gap="2" pl="2" pr="2">
       <Tabs>
-        <TabList>
+        <TabList gap="2">
           <Tab as={Link} to="/home">
             Google Map
           </Tab>
@@ -25,16 +26,17 @@ const Header = () => {
             무한 스크롤
           </Tab>
           <Tab as={Link} to="/todo">
-            Three
+            ToDo
           </Tab>
-          <IconButton
-            aria-label="toggleDarkMode dark mode"
-            onClick={toggleColorMode}
-            icon={<Icon />}
-            variant={'ghost'}
-          />
         </TabList>
       </Tabs>
+      <Spacer />
+      <IconButton
+        aria-label="toggleDarkMode dark mode"
+        onClick={toggleColorMode}
+        icon={<Icon />}
+        variant={'ghost'}
+      />
     </Flex>
   );
 };
